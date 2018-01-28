@@ -1,7 +1,7 @@
-# superWin
+# SuperWin testing
 Test issue: Implement a background animation using the original images for this.
 
-To install, you need:
-1 - clone repository
-2 - npm install
+<strong>To install, you need:</strong><br>
+1 - clone repository <br>
+2 - npm install<br>
 3 - npm run dev
