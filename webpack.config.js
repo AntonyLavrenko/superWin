@@ -1,7 +1,9 @@
 'use strict';
 
 var webpack = require('webpack');
+var WriteFilePlugin = require("write-file-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 var VendorChunkPlugin = require('webpack-vendor-chunk-plugin');
 const path = require('path');
@@ -21,10 +23,11 @@ module.exports = {
     // Make errors mor clear
     devtool: 'inline-source-map',
 
-    // Configure output folder and file
     output: {
-        path: distDir,
-        filename: 'main_bundle.js'
+        path: path.join(__dirname, "./dist"),
+        filename: "main_bundle.js",
+        hotUpdateChunkFilename: 'hot/hot-update.js',
+        hotUpdateMainFilename: 'hot/hot-update.json'
     },
 
     module: {
@@ -69,6 +72,11 @@ module.exports = {
 
     plugins: [
         new CleanWebpackPlugin([distDir]),
+        new WriteFilePlugin,
+        new CopyWebpackPlugin([
+            // {output}/file.txt
+            {from: 'src/assets', to: "assets"}
+        ]),
         new HtmlWebpackPlugin({
             template: 'src/index.html'
         }),

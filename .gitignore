@@ -4,4 +4,5 @@
 temp/
 /src/**/*.js
 src/**/*.js.map
+/dist/
 
