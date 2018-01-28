@@ -11,5 +11,7 @@ html, body, canvas {
 }
 
 div#game {
+    width: 600px;
+    height: 400px;
     margin: 0 auto;
 }
